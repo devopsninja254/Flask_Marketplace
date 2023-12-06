@@ -51,18 +51,18 @@
         </thead>
         <tbody>
             <!-- Your rows inside the table HERE: -->
-            {% for item in items %}
+            {% for item in items %}    <!--this is how to use logical loops in Jinja -->
                 <tr>
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.barcode }}</td>
-                    <td>{{ item.price }}$</td>
+                    <td>Ksh{{ item.price }}</td>
                     <td>
                         <button class="btn btn-outline btn-info">More Info</button>
                         <button class="btn btn-outline btn-success">Purchase this Item</button>
                     </td>
                 </tr>
-            {% endfor %}
+            {% endfor %}  <!--notice the endfor statement-->
         </tbody>
     </table>
 

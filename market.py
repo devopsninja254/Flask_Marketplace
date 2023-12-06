@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,jsonify
+
 
 app = Flask(__name__)  # this is the local python file I'm working with
 
@@ -19,17 +20,20 @@ def purpose():
     return '<h1> I am going to build a nice UI for prod support</h1>'
 
 
+@app.route('/health')
+def health():
+    return jsonify(status="Virtuoso is up and running!")
+
+
 @app.route('/market')
 def market_page():
+    # a list of dictionaries
     items = [
         {'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500},
         {'id': 2, 'name': 'Laptop', 'barcode': '123985473165', 'price': 900},
         {'id': 3, 'name': 'Keyboard', 'barcode': '231985128446', 'price': 150}
     ]
     return render_template('market.html', items=items)    # how to fetch data and display on html using Jinja
-
-
-
 
 
 @app.route('/about/<username>')  # allow this string to receive a username variable. Dynamic routes in flask python
